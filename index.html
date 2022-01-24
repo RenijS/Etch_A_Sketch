@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch A Sketch</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Etch A Sketch</h1>
+    <section class="container">
+      <section class="controls">
+        <input type="color" id="cSelect" name="cSelect" value="#e66465" />
+        <button class="normalMode">Normal Mode</button>
+        <button class="randomMode">Random Mode</button>
+        <button class="eraserMode">Eraser Mode</button>
+        <button class="clearAll">Clear All</button>
+        <section class="rangeInput">
+          <span class="rangeValue">33 * 33</span>
+          <br />
+          <input
+            type="range"
+            id="areaSelector"
+            name="areaSelector"
+            min="1"
+            max="64"
+          />
+        </section>
+      </section>
+      <section class="sketchBoard"></section>
+    </section>
+    <!--JavaScript-->
+    <script src="app.js"></script>
+  </body>
+</html>
