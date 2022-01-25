@@ -44,8 +44,8 @@ button {
   text-align: center;
 }
 .sketchBoard {
-  width: 50rem;
-  height: 20rem;
+  width: 40rem;
+  height: 30rem;
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
@@ -55,4 +55,8 @@ button {
 div {
   border: 1px blue solid;
   box-sizing: border-box;
+}
+
+button:hover {
+  cursor: pointer;
 }
