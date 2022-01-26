@@ -8,6 +8,8 @@ const randomBtn = document.getElementById("randomMode");
 const eraserBtn = document.getElementById("eraserMode");
 const clearBtn = document.getElementById("clearAll");
 
+let activeBtnType = "normal";
+
 function createBlock(blockAmount) {
   for (let i = 0; i < blockAmount * blockAmount; i++) {
     const myDiv = document.createElement("div");
@@ -16,6 +18,7 @@ function createBlock(blockAmount) {
       function (event) {
         // highlight the mouseover target
         event.target.style.backgroundColor = colorSelector.value;
+        event.target.style.borderColor = colorSelector.value;
       },
       false
     );
@@ -27,6 +30,23 @@ function createBlock(blockAmount) {
 
 function clearBlock() {
   sketchBoard.innerHTML = "";
+}
+
+function activeButton(activeType, selectedType) {
+  function checker(type) {
+    if (type === "normal") {
+      return normalBtn;
+    } else if (type === "random") {
+      return randomBtn;
+    } else if (type === "eraser") {
+      return eraserBtn;
+    }
+  }
+  if (activeType != selectedType) {
+    checker(activeType).classList.remove("active");
+    checker(selectedType).classList.add("active");
+    activeBtnType = selectedType;
+  }
 }
 
 createBlock(parseInt(areaSelector.value));
@@ -43,4 +63,16 @@ areaSelector.onchange = () => {
 clearBtn.onclick = () => {
   clearBlock();
   createBlock(parseInt(areaSelector.value));
+};
+
+normalBtn.onclick = () => {
+  activeButton(activeBtnType, "normal");
+};
+
+randomBtn.onclick = () => {
+  activeButton(activeBtnType, "random");
+};
+
+eraserBtn.onclick = () => {
+  activeButton(activeBtnType, "eraser");
 };

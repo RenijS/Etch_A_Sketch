@@ -53,10 +53,17 @@ button {
 }
 
 div {
-  border: 1px blue solid;
+  border: 1px rgb(241, 241, 241) solid;
   box-sizing: border-box;
 }
 
-button:hover {
+.active {
+  background-color: black;
+  color: whitesmoke;
+}
+
+button:hover,
+#cSelect:hover {
   cursor: pointer;
+  transform: scale(1.1);
 }
