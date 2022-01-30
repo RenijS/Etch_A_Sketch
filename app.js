@@ -10,15 +10,26 @@ const clearBtn = document.getElementById("clearAll");
 
 let activeBtnType = "normal";
 
+function setBgColor() {
+  if (activeBtnType == "normal") {
+    return colorSelector.value;
+  } else if (activeBtnType == "random") {
+    return getRandomColor();
+  } else if (activeBtnType == "eraser") {
+    return "#FFFFFF";
+  }
+}
+
 function createBlock(blockAmount) {
   for (let i = 0; i < blockAmount * blockAmount; i++) {
     const myDiv = document.createElement("div");
+
     myDiv.addEventListener(
       "mouseover",
       function (event) {
         // highlight the mouseover target
-        event.target.style.backgroundColor = colorSelector.value;
-        event.target.style.borderColor = colorSelector.value;
+        event.target.style.backgroundColor = setBgColor();
+        event.target.style.borderColor = setBgColor();
       },
       false
     );
@@ -49,6 +60,15 @@ function activeButton(activeType, selectedType) {
   }
 }
 
+function getRandomColor() {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 createBlock(parseInt(areaSelector.value));
 
 areaSelector.onmousemove = (e) => {
@@ -63,6 +83,7 @@ areaSelector.onchange = () => {
 clearBtn.onclick = () => {
   clearBlock();
   createBlock(parseInt(areaSelector.value));
+  activeButton(activeBtnType, "normal");
 };
 
 normalBtn.onclick = () => {
