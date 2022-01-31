@@ -29,7 +29,6 @@ function createBlock(blockAmount) {
       function (event) {
         // highlight the mouseover target
         event.target.style.backgroundColor = setBgColor();
-        event.target.style.borderColor = setBgColor();
       },
       false
     );
